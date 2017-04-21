@@ -13,6 +13,7 @@ namespace genie
     public partial class InputBox : Form
     {
         private Main pmain;
+        int product_number;
 
         public InputBox()
         {
@@ -23,6 +24,15 @@ namespace genie
         {
             InitializeComponent();
             pmain = pmain_ref;
+            product_number = -1;
+        }
+
+        public InputBox(Main pmain_ref, int product_index)
+        {
+            InitializeComponent();
+            pmain = pmain_ref;
+            product_number = product_index;
+            loadProductInfo(product_number);
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -76,13 +86,31 @@ namespace genie
 
             if (this.DialogResult == DialogResult.OK)
             {
-                pmain.product[pmain.product_number].name = inputName.Text;
-                pmain.product[pmain.product_number].price = price;
-                pmain.product[pmain.product_number].cost = cost;
-                pmain.product[pmain.product_number].remarks = inputRemarks.Text;
+                if (product_number == -1)
+                {
+                    pmain.product[pmain.product_count].name = inputName.Text;
+                    pmain.product[pmain.product_count].price = price;
+                    pmain.product[pmain.product_count].cost = cost;
+                    pmain.product[pmain.product_count].remarks = inputRemarks.Text;
 
-                pmain.product_number++;
+                    pmain.product_count++;
+                }
+                else
+                {
+                    pmain.product[product_number].name = inputName.Text;
+                    pmain.product[product_number].price = price;
+                    pmain.product[product_number].cost = cost;
+                    pmain.product[product_number].remarks = inputRemarks.Text;
+                }
             }
+        }
+
+        private void loadProductInfo(int index)
+        {
+            inputName.Text = pmain.product[index].name;
+            inputPrice.Text = "" + pmain.product[index].price;
+            inputCost.Text = "" + pmain.product[index].cost;
+            inputRemarks.Text = pmain.product[index].remarks;
         }
 
         private void inputName_TextChanged(object sender, EventArgs e)

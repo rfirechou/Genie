@@ -42,7 +42,7 @@ namespace genie
         {
             dataGridView1.Rows.Clear();
 
-            for (int prod_idx = 0; prod_idx < pmain.product_number; prod_idx++)
+            for (int prod_idx = 0; prod_idx < pmain.product_count; prod_idx++)
             {
                 dataGridView1.Rows.Add(pmain.product[prod_idx].name, pmain.product[prod_idx].price, pmain.product[prod_idx].cost, pmain.product[prod_idx].remarks);
             }
@@ -53,13 +53,13 @@ namespace genie
 
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void order_Click(object sender, EventArgs e)
         {
             OrderList order = new OrderList(pmain, dataGridView1.CurrentCell.RowIndex);
             order.ShowDialog();
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void deleteProduct_Click(object sender, EventArgs e)
         {
             deleteProductInfo(dataGridView1.CurrentCell.RowIndex);
             dataGridView1.Rows.Clear();
@@ -68,9 +68,9 @@ namespace genie
 
         private void deleteProductInfo(int del_idx)
         {
-            //deleteCustomerOrder(del_idx);
+            //deleteCustomerOrder(del_idx);     // TODO
 
-            for (int i = del_idx; i < pmain.product_number - 1; i++)
+            for (int i = del_idx; i < pmain.product_count - 1; i++)
             {
                 pmain.product[i].name = pmain.product[i + 1].name;
                 pmain.product[i].price = pmain.product[i + 1].price;
@@ -78,8 +78,22 @@ namespace genie
                 pmain.product[i].remarks = pmain.product[i + 1].remarks;
             }
 
-            pmain.product[pmain.product_number - 1].name = "";
-            pmain.product_number--;
+            pmain.product[pmain.product_count - 1].name = "";
+            pmain.product_count--;
+        }
+
+        private void modifyProduct_Click(object sender, EventArgs e)
+        {
+            int current_rowindex = dataGridView1.CurrentCell.RowIndex;
+            InputBox input = new InputBox(pmain, current_rowindex);
+            input.ShowDialog();
+
+            if (input.DialogResult == DialogResult.OK)
+            {
+                showProductList();
+
+                dataGridView1.CurrentCell = dataGridView1.Rows[current_rowindex].Cells[0];  // set select to modified row
+            }
         }
     }
 }

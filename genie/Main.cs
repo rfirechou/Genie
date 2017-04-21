@@ -15,7 +15,7 @@ namespace genie
     {
         public customer_t[] customer = new customer_t[500];
         public product_t[] product = new product_t[500];
-        public int product_number = 0;
+        public int product_count = 0;
 
         public Main()
         {
@@ -41,7 +41,7 @@ namespace genie
             sum.ShowDialog();
         }
 
-        private void read_Click(object sender, EventArgs e)
+        private void read_stat_Click(object sender, EventArgs e)
         {
             string line;
             int current_cust = -1;
@@ -95,7 +95,7 @@ namespace genie
                             product[prod_idx].name = split[0];
                             product[prod_idx].price = Int32.Parse(split[1]);
                             product_index = prod_idx;
-                            product_number++;
+                            product_count++;
                             break;
                         }
 
@@ -134,6 +134,76 @@ namespace genie
             }
 
             MessageBox.Show("讀取完畢");
+
+            file.Close();
+        }
+
+        private void save_Click(object sender, EventArgs e)
+        {
+            if (File.Exists("record.txt"))
+            {
+                if (File.Exists("record.txt.bak"))
+                {
+                    File.Delete("record.txt.bak");
+                }
+
+                File.Move("record.txt", "record.txt.bak");
+            }
+
+            File.Create("record.txt").Close() ;
+
+            StreamWriter file = new StreamWriter(@"record.txt");
+
+            file.WriteLine("$$$");
+
+            for (int pro_idx = 0; pro_idx < product_count; pro_idx++)
+            {
+                /*
+                file.WriteLine((pro_idx + 1) + ". " + product[pro_idx].name);
+                file.WriteLine("    >> 單價: " + product[pro_idx].price);
+                file.WriteLine("    >> 成本: " + product[pro_idx].cost);
+                file.WriteLine("    >> 備註: " + product[pro_idx].remarks);
+                file.WriteLine("\n");
+                */
+                string save_info = "";
+
+                save_info += (pro_idx + ". " + product[pro_idx].name + ": ");
+                save_info += (product[pro_idx].price + ", ");
+                save_info += (product[pro_idx].cost + ", ");
+                save_info += ((product[pro_idx].remarks == "")? "N/A" : product[pro_idx].remarks);
+                file.WriteLine(save_info);
+            }
+
+            file.WriteLine();
+            file.WriteLine("###");
+
+            for (int cus_idx = 0; cus_idx < 500; cus_idx++)
+            {
+                string save_info = "";
+
+                if (customer[cus_idx].name.Length == 0)
+                {
+                    break;
+                }
+
+                save_info += (customer[cus_idx].name + ": ");
+
+                for (int ord_idx = 0; ord_idx < 50; ord_idx++)
+                {
+                    if (customer[cus_idx].order[ord_idx].index == -1)
+                    {
+                        continue;
+                    }
+
+                    save_info += (customer[cus_idx].order[ord_idx].index + "-" + customer[cus_idx].order[ord_idx].quantity);
+                    save_info += " ";
+                }
+
+                file.WriteLine(save_info);
+            }
+
+
+            MessageBox.Show("保存成功");
 
             file.Close();
         }

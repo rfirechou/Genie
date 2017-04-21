@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.button1 = new System.Windows.Forms.Button();
-            this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.button2 = new System.Windows.Forms.Button();
             this.read = new System.Windows.Forms.Button();
+            this.save = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -62,13 +62,24 @@
             this.read.TabIndex = 2;
             this.read.Text = "讀取資料";
             this.read.UseVisualStyleBackColor = true;
-            this.read.Click += new System.EventHandler(this.read_Click);
+            this.read.Click += new System.EventHandler(this.read_stat_Click);
+            // 
+            // save
+            // 
+            this.save.Location = new System.Drawing.Point(665, 253);
+            this.save.Name = "save";
+            this.save.Size = new System.Drawing.Size(84, 28);
+            this.save.TabIndex = 3;
+            this.save.Text = "保存資料";
+            this.save.UseVisualStyleBackColor = true;
+            this.save.Click += new System.EventHandler(this.save_Click);
             // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(793, 452);
+            this.Controls.Add(this.save);
             this.Controls.Add(this.read);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
@@ -81,9 +92,9 @@
         #endregion
 
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.ColorDialog colorDialog1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button read;
+        private System.Windows.Forms.Button save;
     }
 }
 

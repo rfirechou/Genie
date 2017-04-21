@@ -58,6 +58,7 @@
             this.button2.TabIndex = 1;
             this.button2.Text = "修改";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.modifyProduct_Click);
             // 
             // dataGridView1
             // 
@@ -111,7 +112,7 @@
             this.button3.TabIndex = 2;
             this.button3.Text = "刪除";
             this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.button3.Click += new System.EventHandler(this.deleteProduct_Click);
             // 
             // button4
             // 
@@ -121,7 +122,7 @@
             this.button4.TabIndex = 3;
             this.button4.Text = "購買人";
             this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.button4.Click += new System.EventHandler(this.order_Click);
             // 
             // ProductList
             // 
