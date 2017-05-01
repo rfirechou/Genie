@@ -278,7 +278,7 @@ namespace genie
                                     product[product_count].name = split[1];
                                     product[product_count].price = Int32.Parse(split[2]);
                                     product[product_count].cost = Int32.Parse(split[3]);
-                                    if (split[3] == "N/A")
+                                    if (split[4] == "N/A")
                                     {
                                         product[product_count].remarks = "";
                                     }
@@ -304,7 +304,7 @@ namespace genie
 
                                     if (cust_idx == 499)
                                     {
-                                        MessageBox.Show("客人爆表，要增加array上限");
+                                        MessageBox.Show("紀錄的客人太多?");
                                     }
                                 }
 
