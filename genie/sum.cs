@@ -33,16 +33,19 @@ namespace genie
 
         private void sumByCustomer()
         {
+            String text;
+
             for (int cus_idx = 0; cus_idx < 500; cus_idx++)
             {
                 int sum_price = 0;
+                int order = 0;
 
                 if (pmain.customer[cus_idx].name.Length == 0)
                 {
                     break;
                 }
 
-                textBox1.Text += (pmain.customer[cus_idx].name + ":\r\n");
+                text = (pmain.customer[cus_idx].name + ":\r\n");
 
                 for (int ord_idx = 0; ord_idx < 50; ord_idx++)
                 {
@@ -53,14 +56,21 @@ namespace genie
                         continue;
                     }
 
+                    order++;
+
                     prod_idx = pmain.customer[cus_idx].order[ord_idx].index;
                     sum_price += pmain.product[prod_idx].price * pmain.customer[cus_idx].order[ord_idx].quantity;
 
-                    textBox1.Text += ("    " + pmain.product[prod_idx].name + " " + pmain.product[prod_idx].price + " x " + pmain.customer[cus_idx].order[ord_idx].quantity);
-                    textBox1.Text += (" = " + pmain.product[prod_idx].price * pmain.customer[cus_idx].order[ord_idx].quantity + "\r\n");
+                    text += ("    " + pmain.product[prod_idx].name + " " + pmain.product[prod_idx].price + " x " + pmain.customer[cus_idx].order[ord_idx].quantity);
+                    text += (" = " + pmain.product[prod_idx].price * pmain.customer[cus_idx].order[ord_idx].quantity + "\r\n");
                 }
 
-                textBox1.Text += ("  總價: " + sum_price + "\r\n\r\n");
+                text += ("  總價: " + sum_price + "\r\n\r\n");
+
+                if (order != 0)
+                {
+                    textBox1.Text += text;
+                }
             }
         }
     }

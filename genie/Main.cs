@@ -199,6 +199,7 @@ namespace genie
             for (int cus_idx = 0; cus_idx < 500; cus_idx++)
             {
                 string save_info = "";
+                int order = 0;
 
                 if (customer[cus_idx].name.Length == 0)
                 {
@@ -214,11 +215,15 @@ namespace genie
                         continue;
                     }
 
+                    order++;
                     save_info += (customer[cus_idx].order[ord_idx].index + "-" + customer[cus_idx].order[ord_idx].quantity);
                     save_info += " ";
                 }
 
-                file.WriteLine(save_info);
+                if (order != 0)
+                {
+                    file.WriteLine(save_info);
+                }
             }
 
             file.WriteLine("***");
@@ -355,6 +360,8 @@ namespace genie
             }
 
             MessageBox.Show("讀取完畢");
+
+            file.Close();
         }
 }
 
