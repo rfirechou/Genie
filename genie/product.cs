@@ -40,11 +40,31 @@ namespace genie
 
         private void showProductList()
         {
+            int[] quantity = new int[500];
+
+            Array.Clear(quantity, 0, quantity.Length);
+
             dataGridView1.Rows.Clear();
+
+            for (int cust_idx = 0; cust_idx < 500; cust_idx++)
+            {
+                if (pmain.customer[cust_idx].name.Length == 0)
+                {
+                    break;
+                }
+
+                for (int ord_idx = 0; ord_idx < 50; ord_idx++)
+                {
+                    if (pmain.customer[cust_idx].order[ord_idx].index != -1)
+                    {
+                        quantity[pmain.customer[cust_idx].order[ord_idx].index] += pmain.customer[cust_idx].order[ord_idx].quantity;
+                    }
+                }
+            }
 
             for (int prod_idx = 0; prod_idx < pmain.product_count; prod_idx++)
             {
-                dataGridView1.Rows.Add(pmain.product[prod_idx].name, pmain.product[prod_idx].price, pmain.product[prod_idx].cost, pmain.product[prod_idx].remarks);
+                dataGridView1.Rows.Add(pmain.product[prod_idx].name, pmain.product[prod_idx].price, pmain.product[prod_idx].cost, quantity[prod_idx], pmain.product[prod_idx].remarks);
             }
         }
 

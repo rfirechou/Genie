@@ -31,12 +31,13 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
             this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.price = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cost = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.remarks = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -64,13 +65,16 @@
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AllowUserToResizeRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.name,
             this.price,
             this.cost,
+            this.quantity,
             this.remarks});
             this.dataGridView1.Location = new System.Drawing.Point(12, 24);
+            this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersVisible = false;
@@ -79,30 +83,6 @@
             this.dataGridView1.Size = new System.Drawing.Size(404, 209);
             this.dataGridView1.TabIndex = 4;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            // 
-            // name
-            // 
-            this.name.HeaderText = "商品";
-            this.name.Name = "name";
-            this.name.ReadOnly = true;
-            // 
-            // price
-            // 
-            this.price.HeaderText = "單價";
-            this.price.Name = "price";
-            this.price.ReadOnly = true;
-            // 
-            // cost
-            // 
-            this.cost.HeaderText = "成本";
-            this.cost.Name = "cost";
-            this.cost.ReadOnly = true;
-            // 
-            // remarks
-            // 
-            this.remarks.HeaderText = "備註";
-            this.remarks.Name = "remarks";
-            this.remarks.ReadOnly = true;
             // 
             // button3
             // 
@@ -123,6 +103,40 @@
             this.button4.Text = "購買人";
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.order_Click);
+            // 
+            // name
+            // 
+            this.name.HeaderText = "商品";
+            this.name.Name = "name";
+            this.name.ReadOnly = true;
+            // 
+            // price
+            // 
+            this.price.HeaderText = "單價";
+            this.price.Name = "price";
+            this.price.ReadOnly = true;
+            this.price.Width = 60;
+            // 
+            // cost
+            // 
+            this.cost.HeaderText = "成本";
+            this.cost.Name = "cost";
+            this.cost.ReadOnly = true;
+            this.cost.Width = 60;
+            // 
+            // quantity
+            // 
+            this.quantity.HeaderText = "數量";
+            this.quantity.Name = "quantity";
+            this.quantity.ReadOnly = true;
+            this.quantity.Width = 60;
+            // 
+            // remarks
+            // 
+            this.remarks.HeaderText = "備註";
+            this.remarks.Name = "remarks";
+            this.remarks.ReadOnly = true;
+            this.remarks.Width = 120;
             // 
             // ProductList
             // 
@@ -146,10 +160,11 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button4;
         private System.Windows.Forms.DataGridViewTextBoxColumn name;
         private System.Windows.Forms.DataGridViewTextBoxColumn price;
         private System.Windows.Forms.DataGridViewTextBoxColumn cost;
+        private System.Windows.Forms.DataGridViewTextBoxColumn quantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn remarks;
-        private System.Windows.Forms.Button button4;
     }
 }
