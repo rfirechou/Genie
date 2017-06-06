@@ -38,6 +38,9 @@
             this.inputPrice = new System.Windows.Forms.TextBox();
             this.inputCost = new System.Windows.Forms.TextBox();
             this.inputRemarks = new System.Windows.Forms.TextBox();
+            this.rate = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // button1
@@ -109,6 +112,7 @@
             // 
             // inputPrice
             // 
+            this.inputPrice.ImeMode = System.Windows.Forms.ImeMode.Disable;
             this.inputPrice.Location = new System.Drawing.Point(53, 67);
             this.inputPrice.Name = "inputPrice";
             this.inputPrice.Size = new System.Drawing.Size(100, 22);
@@ -117,6 +121,7 @@
             // 
             // inputCost
             // 
+            this.inputCost.ImeMode = System.Windows.Forms.ImeMode.Disable;
             this.inputCost.Location = new System.Drawing.Point(53, 97);
             this.inputCost.Name = "inputCost";
             this.inputCost.Size = new System.Drawing.Size(100, 22);
@@ -131,11 +136,40 @@
             this.inputRemarks.TabIndex = 3;
             this.inputRemarks.TextChanged += new System.EventHandler(this.inputRemarks_TextChanged);
             // 
+            // rate
+            // 
+            this.rate.Location = new System.Drawing.Point(174, 97);
+            this.rate.Name = "rate";
+            this.rate.Size = new System.Drawing.Size(52, 22);
+            this.rate.TabIndex = 9;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("新細明體", 9F);
+            this.label5.Location = new System.Drawing.Point(158, 103);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(11, 12);
+            this.label5.TabIndex = 10;
+            this.label5.Text = "*";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(185, 126);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(29, 12);
+            this.label6.TabIndex = 11;
+            this.label6.Text = "匯率";
+            // 
             // InputBox
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(260, 183);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.rate);
             this.Controls.Add(this.inputRemarks);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.inputCost);
@@ -166,5 +200,8 @@
         private System.Windows.Forms.TextBox inputCost;
         private System.Windows.Forms.TextBox inputRemarks;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox rate;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
     }
 }

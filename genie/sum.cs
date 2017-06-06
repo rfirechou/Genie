@@ -65,13 +65,18 @@ namespace genie
                     text += (" = " + pmain.product[prod_idx].price * pmain.customer[cus_idx].order[ord_idx].quantity + "\r\n");
                 }
 
-                text += ("  總價: " + sum_price + "\r\n\r\n");
+                text += ("  合計: " + sum_price + "\r\n\r\n");
 
                 if (order != 0)
                 {
                     textBox1.Text += text;
                 }
             }
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

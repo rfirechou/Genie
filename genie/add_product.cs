@@ -20,19 +20,30 @@ namespace genie
             InitializeComponent();
         }
 
-        public InputBox(Main pmain_ref)
+        public InputBox(Main pmain_ref, string rateS)
         {
             InitializeComponent();
+            rate.Text = rateS;
             pmain = pmain_ref;
             product_number = -1;
         }
 
-        public InputBox(Main pmain_ref, int product_index)
+        public InputBox(Main pmain_ref, int product_index, string rateS)
         {
             InitializeComponent();
+            
             pmain = pmain_ref;
             product_number = product_index;
             loadProductInfo(product_number);
+
+            if (pmain.product[product_number].cost == 0)
+            {
+                rate.Text = rateS;
+            }
+            else
+            {
+                rate.Text = "1.0";
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -62,7 +73,7 @@ namespace genie
 
             if (inputPrice.Text.Length == 0)
             {
-                message += "單價未輸入\n";
+                price = 0;
             }
             else if (!int.TryParse(inputPrice.Text, out price))
             {
@@ -83,6 +94,8 @@ namespace genie
                 MessageBox.Show(message);
                 this.DialogResult = DialogResult.None;
             }
+
+            cost = (int)(cost * float.Parse(rate.Text) + 0.9);  // 無條件進位
 
             if (this.DialogResult == DialogResult.OK)
             {

@@ -27,7 +27,7 @@ namespace genie
 
         private void addProduct_Click(object sender, EventArgs e)
         {
-            InputBox input = new InputBox(pmain);
+            InputBox input = new InputBox(pmain, rate.Text);
             input.ShowDialog();
 
             if (input.DialogResult == DialogResult.OK)
@@ -77,6 +77,10 @@ namespace genie
         {
             OrderList order = new OrderList(pmain, dataGridView1.CurrentCell.RowIndex);
             order.ShowDialog();
+
+            int current_row = dataGridView1.CurrentCell.RowIndex;
+            showProductList();
+            dataGridView1.CurrentCell = dataGridView1.Rows[current_row].Cells[0];  // set select to modified row
         }
 
         private void deleteProduct_Click(object sender, EventArgs e)
@@ -105,7 +109,7 @@ namespace genie
         private void modifyProduct_Click(object sender, EventArgs e)
         {
             int current_rowindex = dataGridView1.CurrentCell.RowIndex;
-            InputBox input = new InputBox(pmain, current_rowindex);
+            InputBox input = new InputBox(pmain, current_rowindex, rate.Text);
             input.ShowDialog();
 
             if (input.DialogResult == DialogResult.OK)
@@ -114,6 +118,11 @@ namespace genie
 
                 dataGridView1.CurrentCell = dataGridView1.Rows[current_rowindex].Cells[0];  // set select to modified row
             }
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
